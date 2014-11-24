@@ -1,0 +1,96 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.wc-time {
+  padding-top: 10px;
+}
+
+.wc-main-time {
+  font-size: 42px;
+  margin-left: 10px;
+}
+
+.wc-dashboard {
+  padding-top:10px;
+  text-align: right;
+}
+
+.wc-offset-time {
+  font-size: 18px;
+}
+
+.wc-offset-label, .wc-main-time-label {
+  display: block;
+}
+
+.wc-setting {
+  padding-bottom:40px;
+}
+
+
+.wc-settings button, .wc-time button {
+  width: 100%;
+}
+
+.wc-main-time-label {
+  font-size: 20px;
+}
+
+label {
+  font-weight: normal;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .wc-main-time {
+    font-size: 50px;
+  }
+
+  .wc-dashboard {
+    padding-top: 56px;
+    padding-bottom:70px;
+  }
+}
+
+@media (min-width: 768px) {
+  hr {
+    display: block;
+    border-top: 2px solid;
+  }
+
+  .wc-main-time-label, .wc-main-time {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .wc-dashboard {
+    padding-top:20px;
+    padding-bottom:40px;
+    text-align: left;
+    line-height: 70px;
+  }
+
+  .wc-time {
+    padding-top:50px;
+  }
+
+   .form-group {
+    margin-right: 10px;
+  }
+
+  .wc-settings .form-group input {
+    width:100px;
+  }
+
+  .wc-settings button, .wc-time button {
+    width: auto;
+  }
+
+  .wc-settings {
+    padding-top:80px;
+    padding-bottom:40px;
+  }
+
+  .wc-offset-label, .wc-main-time-label {
+    display: inline;
+  }
+}

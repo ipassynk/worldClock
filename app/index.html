@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>World Clock</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="container" ng-controller="wcClockCtrl as vm" ng-cloak>
+  <section class="row wc-time">
+    <form class="form-inline col-md-6 col-sm-12 col-xs-12" role="form" ng-submit="vm.setTorontoTime()">
+      <div class="form-group">
+        <label for="torontoTime">Set {{vm.city}} time:</label>
+        <input class="form-control" id="torontoTime" type="text" ng-model="vm.newClock" placeholder="HH:mm:ss"
+               required pattern="^([0-1]\d|2[0-3]):([0-5]\d):([0-5]\d)$">
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </section>
+
+  <section class="row wc-dashboard">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+      <span class="wc-main-time-label">{{vm.city}}:</span>
+      <span class="wc-main-time">{{vm.clock | date:'HH:mm:ss'}}</span>
+    </div>
+    <div ng-repeat="city in vm.cities" class="col-md-3 col-sm-6 col-xs-12" ng-class="{'text-right' : $index==1}">
+      <span class="wc-offset-label">{{city.name}}:</span>
+      <span class="wc-offset-time">{{vm.getClockOffset(city.offset) | date:'HH:mm:ss'}}</span>
+    </div>
+  </section>
+
+  <hr class="hidden-xs"/>
+
+  <section class="row wc-settings">
+    <div class="col-md-12">Settings</div>
+    <div ng-repeat="city in vm.cities" class="col-md-6 wc-setting">
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <label for="offset{{city.name}}">Time difference for {{city.name}}</label>
+          <input class="form-control" id="offset{{city.name}}" type="number" max="14" min="-14" required
+                 ng-model="city.offset" ng-model-options="{updateOn: 'submit'}">
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <input type="email" class="form-control col-sm-2" id="inputEmail3" placeholder="Email">
+        <button type="submit" class="btn col-sm-2 control-label">Submit</button>
+       </div>
+      </form>
+  </section>
+</div>
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
